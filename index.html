@@ -10,7 +10,7 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     body {
@@ -19,15 +19,45 @@
       line-height: 1.6;
     }
 
+    /* Estilização do Topo com Logos */
     header {
-      background: linear-gradient(135deg, #2563eb, #9333ea);
-      padding: 60px 20px;
+      background: linear-gradient(135deg, #1e1b4b, #2563eb, #9333ea);
+      padding: 40px 20px 60px 20px;
       text-align: center;
+    }
+
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 20px;
+      backdrop-filter: blur(5px);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .logo-container img {
+      max-height: 80px; /* Ajuste conforme necessário */
+      width: auto;
+      transition: transform 0.3s ease;
+      /* Se as logos forem escuras e você quiser que fiquem brancas:
+      filter: brightness(0) invert(1); */
+    }
+
+    .logo-container img:hover {
+      transform: scale(1.1);
     }
 
     header h1 {
       font-size: 2.8rem;
       margin-bottom: 10px;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
     }
 
     header p {
@@ -35,6 +65,7 @@
       opacity: 0.9;
     }
 
+    /* Restante do layout */
     .container {
       max-width: 1100px;
       margin: auto;
@@ -44,6 +75,8 @@
     h2 {
       margin-bottom: 20px;
       color: #38bdf8;
+      border-left: 4px solid #9333ea;
+      padding-left: 15px;
     }
 
     .cards {
@@ -54,38 +87,43 @@
 
     .card {
       background: #1e293b;
-      padding: 20px;
+      padding: 25px;
       border-radius: 15px;
       transition: 0.3s;
+      border: 1px solid rgba(255,255,255,0.05);
     }
 
     .card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px);
       background: #334155;
+      border-color: #38bdf8;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
     }
 
     .btn {
       display: inline-block;
       margin-top: 15px;
-      padding: 10px 15px;
+      padding: 10px 20px;
       background: #2563eb;
       color: white;
       text-decoration: none;
       border-radius: 8px;
+      font-weight: bold;
       transition: 0.3s;
     }
 
     .btn:hover {
-      background: #1d4ed8;
+      background: #38bdf8;
+      transform: scale(1.05);
     }
 
     footer {
       text-align: center;
-      padding: 20px;
+      padding: 30px;
       background: #020617;
       margin-top: 40px;
       font-size: 0.9rem;
-      opacity: 0.7;
+      border-top: 1px solid #1e293b;
     }
   </style>
 </head>
@@ -93,6 +131,13 @@
 <body>
 
 <header>
+  <!-- Espaço para as Logos -->
+  <div class="logo-container">
+    <!-- Você pode usar a imagem única ou recortar cada uma. 
+         Abaixo coloquei como se fosse a imagem única enviada por você -->
+    <img src=https://github.com/emanuelsantos-glitch/ads-e-matematica/blob/main/imagem_2026-05-03_171755088.png alt="Logos Institucionais AESA, CESA, Matemática e ADS">
+  </div>
+
   <h1>🎮 Gamificação Interdisciplinar</h1>
   <p>Integração entre ADS e Matemática para criação de jogos educativos</p>
 </header>
@@ -100,8 +145,8 @@
 <section class="container">
   <h2>📘 Sobre o Projeto</h2>
   <p>
-    Este projeto une estudantes de Análise e Desenvolvimento de Sistemas e Licenciatura em Matemática
-    para desenvolver jogos educativos voltados ao ensino fundamental, utilizando metodologias ativas
+    Este projeto une estudantes de <strong>Análise e Desenvolvimento de Sistemas</strong> e <strong>Licenciatura em Matemática</strong> 
+    para desenvolver jogos educativos voltados ao ensino fundamental, utilizando metodologias ativas 
     e gamificação como estratégia de ensino.
   </p>
 </section>
@@ -110,64 +155,54 @@
   <h2>🧠 Metodologia</h2>
   <div class="cards">
     <div class="card">
-      <h3>Gamificação</h3>
+      <h3>🕹️ Gamificação</h3>
       <p>Uso de elementos de jogos para aumentar engajamento e aprendizagem.</p>
     </div>
 
     <div class="card">
-      <h3>Interdisciplinaridade</h3>
-      <p>Integração entre tecnologia e educação matemática.</p>
+      <h3>🤝 Interdisciplinaridade</h3>
+      <p>Integração entre tecnologia e educação matemática aplicada.</p>
     </div>
 
     <div class="card">
-      <h3>Aprendizagem por Projetos</h3>
-      <p>Estudantes desenvolvem soluções reais com impacto educacional.</p>
+      <h3>🚀 Projetos Reais</h3>
+      <p>Estudantes desenvolvem soluções com impacto real na rede de ensino.</p>
     </div>
   </div>
 </section>
 
 <section class="container">
   <h2>🎮 Jogos Desenvolvidos</h2>
-
   <div class="cards">
-
     <div class="card">
       <h3>🎲 Tabuleiro Matemático</h3>
       <p>Jogo interativo para desenvolver raciocínio lógico e operações básicas.</p>
-      <a href="#" class="btn">Jogar</a>
+      <a href="#" class="btn">Jogar Agora</a>
     </div>
 
     <div class="card">
       <h3>🎯 Bingo Matemático</h3>
       <p>Aprendizado divertido com números e operações matemáticas.</p>
-      <a href="#" class="btn">Jogar</a>
+      <a href="#" class="btn">Jogar Agora</a>
     </div>
 
     <div class="card">
       <h3>🏀 Fubica Matemática</h3>
       <p>Jogo dinâmico que estimula cálculo rápido e tomada de decisão.</p>
-      <a href="#" class="btn">Jogar</a>
+      <a href="#" class="btn">Jogar Agora</a>
     </div>
 
     <div class="card">
       <h3>🛒 Mercado Matemático</h3>
       <p>Simulação de compras com foco em operações e resolução de problemas.</p>
-      <a href="#" class="btn">Jogar</a>
+      <a href="#" class="btn">Jogar Agora</a>
     </div>
-
   </div>
-</section>
-
-<section class="container">
-  <h2>📊 Resultados Esperados</h2>
-  <p>
-    O projeto busca promover o desenvolvimento de competências técnicas e pedagógicas,
-    além de contribuir com a educação básica através da disponibilização gratuita de jogos educativos.
-  </p>
 </section>
 
 <footer>
   <p>© 2026 - Projeto ADS & Matemática | Desenvolvido por Emanuel Santos</p>
+  <p style="margin-top: 10px; font-size: 0.8rem;">AESA - CESA - Arcoverde/PE</p>
 </footer>
 
 </body>
