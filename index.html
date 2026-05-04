@@ -3,207 +3,250 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gamificação Interdisciplinar</title>
-
+  <title>Gamificação Interdisciplinar | AESA-CESA</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    :root {
+      --primary: #2563eb;
+      --secondary: #9333ea;
+      --accent: #38bdf8;
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
     }
 
-    body {
-      background: #0f172a;
-      color: #fff;
-      line-height: 1.6;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+    body { background: var(--bg); color: var(--text); line-height: 1.6; scroll-behavior: smooth; }
 
-    /* Estilização do Topo com Logos */
+    /* Header e Logos */
     header {
-      background: linear-gradient(135deg, #1e1b4b, #2563eb, #9333ea);
-      padding: 40px 20px 60px 20px;
+      background: linear-gradient(135deg, #1e1b4b, var(--primary), var(--secondary));
+      padding: 40px 15px;
       text-align: center;
     }
-
-    .logo-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 30px;
-      margin-bottom: 30px;
-      flex-wrap: wrap;
-      background: rgba(255, 255, 255, 0.1);
+    
+    .logo-box {
+      background: #fff;
       padding: 20px;
-      border-radius: 20px;
-      backdrop-filter: blur(5px);
-      max-width: 900px;
+      border-radius: 15px;
+      display: inline-block;
+      margin-bottom: 25px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      max-width: 100%; /* Garante que não ultrapasse a tela */
+    }
+
+    .logo-box img {
+      max-width: 100%; /* Torna a imagem responsiva */
+      height: auto;
+      max-height: 100px;
+      transition: transform 0.4s ease;
+      margin-bottom: 20px;
+      display: block;
       margin-left: auto;
       margin-right: auto;
     }
+    .logo-box img:hover { transform: scale(1.05); }
 
-    .logo-container img {
-      max-height: 80px; /* Ajuste conforme necessário */
-      width: auto;
-      transition: transform 0.3s ease;
-      /* Se as logos forem escuras e você quiser que fiquem brancas:
-      filter: brightness(0) invert(1); */
-    }
-
-    .logo-container img:hover {
-      transform: scale(1.1);
-    }
-
-    header h1 {
-      font-size: 2.8rem;
-      margin-bottom: 10px;
-      text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-    }
-
-    header p {
-      font-size: 1.2rem;
-      opacity: 0.9;
-    }
-
-    /* Restante do layout */
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 40px 20px;
-    }
-
-    h2 {
-      margin-bottom: 20px;
-      color: #38bdf8;
-      border-left: 4px solid #9333ea;
-      padding-left: 15px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: #1e293b;
-      padding: 25px;
-      border-radius: 15px;
-      transition: 0.3s;
-      border: 1px solid rgba(255,255,255,0.05);
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      background: #334155;
-      border-color: #38bdf8;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-    }
-
-    .btn {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 10px 20px;
-      background: #2563eb;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
+    .institutional-info {
+      color: #1e293b;
       font-weight: bold;
-      transition: 0.3s;
+      font-size: 0.8rem;
+      line-height: 1.4;
+      text-transform: uppercase;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 15px;
+    }
+
+    .hero h1 { font-size: 2.2rem; margin-bottom: 15px; padding: 0 10px; }
+    .hero p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 30px; max-width: 800px; margin: 0 auto 30px; padding: 0 15px; }
+    
+    /* Botões Personalizados */
+    .btn-group { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+    
+    .btn {
+      padding: 12px 30px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+      display: inline-block;
+      background: #ffffff;
+      color: var(--primary);
+      border: 2px solid #ffffff;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     .btn:hover {
-      background: #38bdf8;
       transform: scale(1.05);
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     }
 
-    footer {
-      text-align: center;
-      padding: 30px;
-      background: #020617;
-      margin-top: 40px;
-      font-size: 0.9rem;
-      border-top: 1px solid #1e293b;
+    /* Seções */
+    .container { max-width: 1100px; margin: auto; padding: 40px 20px; }
+    h2 { color: var(--accent); margin-bottom: 30px; border-left: 5px solid var(--secondary); padding-left: 15px; font-size: 1.8rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+    .card { background: var(--card-bg); padding: 25px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); height: 100%; }
+
+    /* Estilo das Fotos dos Professores */
+    .teacher-photo {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent);
+      margin-bottom: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    
+    .teacher-card { text-align: center; flex: 1; min-width: 150px; margin-bottom: 20px; }
+
+    /* Subpáginas de Jogos (Tabs) */
+    .game-nav { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 15px; margin-bottom: 30px; scrollbar-width: thin; }
+    .game-tab { 
+      background: var(--card-bg); padding: 10px 20px; border-radius: 8px; cursor: pointer; white-space: nowrap;
+      border: 1px solid var(--primary); transition: 0.3s; font-size: 0.9rem;
+    }
+    .game-tab.active { background: var(--primary); }
+    .game-content { display: none; animation: fadeIn 0.5s; }
+    .game-content.active { display: block; }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    footer { background: #020617; padding: 40px; text-align: center; border-top: 1px solid #1e293b; font-size: 0.9rem; }
+
+    /* Media Queries para telas muito pequenas */
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.8rem; }
+      .institutional-info { font-size: 0.7rem; }
+      .logo-box { padding: 15px; }
     }
   </style>
 </head>
-
 <body>
 
 <header>
-  <!-- Espaço para as Logos -->
-  <div class="logo-container">
-    <!-- Você pode usar a imagem única ou recortar cada uma. 
-         Abaixo coloquei como se fosse a imagem única enviada por você -->
-    <img src=https://github.com/emanuelsantos-glitch/ads-e-matematica/blob/main/imagem_2026-05-03_171755088.png alt="Logos Institucionais AESA, CESA, Matemática e ADS">
+  <div class="logo-box">
+    <img src="https://github.com/emanuelsantos-glitch/ads-e-matematica/blob/d82b7eade1e52ebf760a868aedd32b1ebe4be000/imagem_2026-05-03_171755088.png?raw=true" alt="Logos AESA CESA ADS Matemática">
+    
+    <div class="institutional-info">
+      <p>AESA – AUTARQUIA DE ENSINO SUPERIOR DE ARCOVERDE</p>
+      <p>CESA – CENTRO DE ENSINO SUPERIOR DE ARCOVERDE</p>
+      <p>CURSO DE LICENCIATURA EM MATEMÁTICA</p>
+      <p>CURSO SUPERIOR DE TECNOLOGIA EM ANÁLISE E DESENVOLVIMENTO DE SISTEMAS</p>
+    </div>
   </div>
 
-  <h1>🎮 Gamificação Interdisciplinar</h1>
-  <p>Integração entre ADS e Matemática para criação de jogos educativos</p>
+  <div class="hero">
+    <h1>Gamificação Interdisciplinar no Ensino Superior</h1>
+    <p>Integração entre ADS e Matemática para criação de jogos educativos inovadores desenvolvidos na AESA-CESA.</p>
+    <div class="btn-group">
+      <a href="#sobre" class="btn">Conhecer o Projeto</a>
+      <a href="#jogos" class="btn">Ver Jogos</a>
+    </div>
+  </div>
 </header>
 
-<section class="container">
+<section id="sobre" class="container">
   <h2>📘 Sobre o Projeto</h2>
-  <p>
-    Este projeto une estudantes de <strong>Análise e Desenvolvimento de Sistemas</strong> e <strong>Licenciatura em Matemática</strong> 
-    para desenvolver jogos educativos voltados ao ensino fundamental, utilizando metodologias ativas 
-    e gamificação como estratégia de ensino.
-  </p>
+  <div class="grid">
+    <div class="card">
+      <h3>Contexto e Objetivo</h3>
+      <p>O projeto <strong>Gamificação Interdisciplinar no Ensino Superior</strong> integra estudantes de ADS e Matemática na criação de jogos educativos para o ensino fundamental. Utilizando gamificação e metodologias ativas, a iniciativa promove aprendizagem mais dinâmica e fortalece a relação entre universidade e sociedade.</p>
+    </div>
+    
+    <div class="card">
+      <h3>Corpo Docente</h3>
+      <p style="margin-bottom: 15px; opacity: 0.8;">Professores Orientadores</p>
+      <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+        
+        <div class="teacher-card">
+          <img src="https://github.com/emanuelsantos-glitch/ads-e-matematica/blob/main/antonio.png?raw=true" alt="Prof. Antônio César" class="teacher-photo">
+          <p><strong>ANTÔNIO CÉSAR</strong></p>
+          <p style="font-size: 0.75rem; opacity: 0.7;">Licenciatura em Matemática</p>
+        </div>
+
+        <div class="teacher-card">
+          <img src="https://github.com/emanuelsantos-glitch/ads-e-matematica/blob/main/emanuel.png?raw=true" alt="Prof. Emanuel Natalino" class="teacher-photo">
+          <p><strong>EMANUEL NATALINO</strong></p>
+          <p style="font-size: 0.75rem; opacity: 0.7;">Coordenador de ADS</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="container">
   <h2>🧠 Metodologia</h2>
-  <div class="cards">
+  <div class="grid">
     <div class="card">
-      <h3>🕹️ Gamificação</h3>
-      <p>Uso de elementos de jogos para aumentar engajamento e aprendizagem.</p>
+      <h3>Participantes</h3>
+      <p>Participam do projeto estudantes do 4º período de ADS, com foco em desenvolvimento técnico (algoritmos e web), e estudantes do 5º período de Matemática, responsáveis pela curadoria pedagógica e validação dos conteúdos conforme a BNCC.</p>
     </div>
+  </div>
+</section>
 
-    <div class="card">
-      <h3>🤝 Interdisciplinaridade</h3>
-      <p>Integração entre tecnologia e educação matemática aplicada.</p>
-    </div>
+<section id="jogos" class="container">
+  <h2>🎮 Jogos Desenvolvidos</h2>
+  <div class="game-nav" id="gameTabs">
+    <div class="game-tab active" onclick="openGame(event, 'mercado')">🛒 Mercado</div>
+    <div class="game-tab" onclick="openGame(event, 'tabuleiro')">🎲 Tabuleiro</div>
+    <div class="game-tab" onclick="openGame(event, 'bingo')">🎯 Bingo</div>
+    <div class="game-tab" onclick="openGame(event, 'fubica')">🏀 Fubica</div>
+    <div class="game-tab" onclick="openGame(event, 'operacoes')">🧮 Operações</div>
+  </div>
 
+  <div id="mercado" class="game-content active">
     <div class="card">
-      <h3>🚀 Projetos Reais</h3>
-      <p>Estudantes desenvolvem soluções com impacto real na rede de ensino.</p>
+      <h3>🛒 Mercado Matemático</h3>
+      <p>Simulação de compras focada em operações básicas e educação financeira.</p>
+      <p><strong>BNCC:</strong> (EF04MA25) e (EF05MA07).</p>
+      <div style="margin-top: 20px;">
+        <a href="https://mercadomatematico.netlify.app" target="_blank" class="btn">Testar Jogo</a>
+      </div>
     </div>
+  </div>
+
+  <div id="tabuleiro" class="game-content">
+    <div class="card"><h3>🎲 Tabuleiro Matemático</h3><p>Em desenvolvimento interdisciplinar.</p></div>
+  </div>
+  <div id="bingo" class="game-content">
+    <div class="card"><h3>🎯 Bingo Matemático</h3><p>Em desenvolvimento interdisciplinar.</p></div>
+  </div>
+  <div id="fubica" class="game-content">
+    <div class="card"><h3>🏀 Fubica Matemática</h3><p>Em desenvolvimento interdisciplinar.</p></div>
+  </div>
+  <div id="operacoes" class="game-content">
+    <div class="card"><h3>🧮 Operações Matemáticas</h3><p>Em desenvolvimento interdisciplinar.</p></div>
   </div>
 </section>
 
 <section class="container">
-  <h2>🎮 Jogos Desenvolvidos</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>🎲 Tabuleiro Matemático</h3>
-      <p>Jogo interativo para desenvolver raciocínio lógico e operações básicas.</p>
-      <a href="#" class="btn">Jogar Agora</a>
-    </div>
-
-    <div class="card">
-      <h3>🎯 Bingo Matemático</h3>
-      <p>Aprendizado divertido com números e operações matemáticas.</p>
-      <a href="#" class="btn">Jogar Agora</a>
-    </div>
-
-    <div class="card">
-      <h3>🏀 Fubica Matemática</h3>
-      <p>Jogo dinâmico que estimula cálculo rápido e tomada de decisão.</p>
-      <a href="#" class="btn">Jogar Agora</a>
-    </div>
-
-    <div class="card">
-      <h3>🛒 Mercado Matemático</h3>
-      <p>Simulação de compras com foco em operações e resolução de problemas.</p>
-      <a href="#" class="btn">Jogar Agora</a>
-    </div>
+  <h2>📝 Considerações Finais</h2>
+  <div class="card">
+    <p style="text-align: justify; font-size: 0.95rem;">
+      A colaboração entre tecnologia e licenciatura na AESA-CESA é especialmente produtiva. Enquanto os estudantes de ADS ganham contexto pedagógico, os de Matemática desenvolvem fluência digital, criando inovação no interior de Pernambuco.
+    </p>
   </div>
 </section>
 
 <footer>
-  <p>© 2026 - Projeto ADS & Matemática | Desenvolvido por Emanuel Santos</p>
-  <p style="margin-top: 10px; font-size: 0.8rem;">AESA - CESA - Arcoverde/PE</p>
+  <p>© 2026 - Emanuel Santos | ADS - AESA/CESA</p>
+  <p>Arcoverde - PE</p>
 </footer>
+
+<script>
+  function openGame(evt, gameName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("game-content");
+    for (i = 0; i < tabcontent.length; i++) { tabcontent[i].style.display = "none"; }
+    tablinks = document.getElementsByClassName("game-tab");
+    for (i = 0; i < tablinks.length; i++) { tablinks[i].className = tablinks[i].className.replace(" active", ""); }
+    document.getElementById(gameName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+</script>
 
 </body>
 </html>
