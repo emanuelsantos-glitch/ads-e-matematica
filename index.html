@@ -1,330 +1,674 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gamificação Interdisciplinar | AESA-CESA</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gamificação Interdisciplinar no Ensino Superior</title>
+
   <style>
-    :root {
-      --primary: #2563eb;
-      --secondary: #9333ea;
-      --accent: #38bdf8;
-      --bg: #0f172a;
-      --card-bg: #1e293b;
-      --text: #f8fafc;
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-    body { background: var(--bg); color: var(--text); line-height: 1.6; scroll-behavior: smooth; }
-
-    /* Header e Logos */
-    header {
-      background: linear-gradient(135deg, #1e1b4b, var(--primary), var(--secondary));
-      padding: 40px 15px;
-      text-align: center;
-    }
-    
-    .logo-box {
-      background: #fff;
-      padding: 20px;
-      border-radius: 15px;
-      display: inline-block;
-      margin-bottom: 25px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-      max-width: 100%; /* Garante que não ultrapasse a tela */
+    body{
+      background:#f4f7fb;
+      color:#222;
+      line-height:1.6;
     }
 
-    .logo-box img {
-      max-width: 100%; /* Torna a imagem responsiva */
-      height: auto;
-      max-height: 100px;
-      transition: transform 0.4s ease;
-      margin-bottom: 20px;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .logo-box img:hover { transform: scale(1.05); }
-
-    .institutional-info {
-      color: #1e293b;
-      font-weight: bold;
-      font-size: 0.8rem;
-      line-height: 1.4;
-      text-transform: uppercase;
-      border-top: 1px solid #e2e8f0;
-      padding-top: 15px;
+    header{
+      background:linear-gradient(135deg,#0d47a1,#1565c0,#42a5f5);
+      color:white;
+      padding:40px 20px;
+      text-align:center;
     }
 
-    .hero h1 { font-size: 2.2rem; margin-bottom: 15px; padding: 0 10px; }
-    .hero p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 30px; max-width: 800px; margin: 0 auto 30px; padding: 0 15px; }
-    
-    /* Botões Personalizados */
-    .btn-group { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
-    
-    .btn {
-      padding: 12px 30px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      cursor: pointer;
-      display: inline-block;
-      background: #ffffff;
-      color: var(--primary);
-      border: 2px solid #ffffff;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    .logos{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:30px;
+      flex-wrap:wrap;
+      margin-bottom:20px;
     }
 
-    .btn:hover {
-      transform: scale(1.05);
-      background: var(--primary);
-      color: #ffffff;
-      border-color: var(--primary);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    .logos img{
+      width:120px;
+      height:120px;
+      object-fit:contain;
+      background:white;
+      border-radius:20px;
+      padding:10px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.2);
     }
 
-    /* Seções */
-    .container { max-width: 1100px; margin: auto; padding: 40px 20px; }
-    h2 { color: var(--accent); margin-bottom: 30px; border-left: 5px solid var(--secondary); padding-left: 15px; font-size: 1.8rem; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-    .card { background: var(--card-bg); padding: 25px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); height: 100%; }
-
-    /* Estilo das Fotos dos Professores */
-    .teacher-photo {
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--accent);
-      margin-bottom: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    .instituicao{
+      font-size:18px;
+      font-weight:bold;
+      margin-top:5px;
     }
-    
-    .teacher-card { text-align: center; flex: 1; min-width: 150px; margin-bottom: 20px; }
 
-    /* Subpáginas de Jogos (Tabs) */
-    .game-nav { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 15px; margin-bottom: 30px; scrollbar-width: thin; }
-    .game-tab { 
-      background: var(--card-bg); padding: 10px 20px; border-radius: 8px; cursor: pointer; white-space: nowrap;
-      border: 1px solid var(--primary); transition: 0.3s; font-size: 0.9rem;
+    .hero{
+      padding:60px 20px;
+      text-align:center;
+      background:white;
     }
-    .game-tab.active { background: var(--primary); }
-    .game-content { display: none; animation: fadeIn 0.5s; }
-    .game-content.active { display: block; }
 
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .hero h1{
+      font-size:42px;
+      color:#0d47a1;
+      margin-bottom:15px;
+    }
 
-    footer { background: #020617; padding: 40px; text-align: center; border-top: 1px solid #1e293b; font-size: 0.9rem; }
+    .hero p{
+      font-size:20px;
+      max-width:900px;
+      margin:auto;
+      color:#444;
+    }
 
-    /* Media Queries para telas muito pequenas */
-    @media (max-width: 600px) {
-      .hero h1 { font-size: 1.8rem; }
-      .institutional-info { font-size: 0.7rem; }
-      .logo-box { padding: 15px; }
+    nav{
+      background:#0d47a1;
+      padding:15px;
+      position:sticky;
+      top:0;
+      z-index:1000;
+    }
+
+    nav ul{
+      display:flex;
+      justify-content:center;
+      list-style:none;
+      gap:30px;
+      flex-wrap:wrap;
+    }
+
+    nav a{
+      color:white;
+      text-decoration:none;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    nav a:hover{
+      color:#ffd54f;
+    }
+
+    section{
+      padding:60px 20px;
+      max-width:1200px;
+      margin:auto;
+    }
+
+    .section-title{
+      text-align:center;
+      font-size:36px;
+      color:#0d47a1;
+      margin-bottom:40px;
+    }
+
+    .pdf-container{
+      width:100%;
+      height:700px;
+      border-radius:20px;
+      overflow:hidden;
+      box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .pdf-container iframe{
+      width:100%;
+      height:100%;
+      border:none;
+    }
+
+    .timeline{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:20px;
+    }
+
+    .timeline-card{
+      background:white;
+      padding:25px;
+      border-radius:20px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.08);
+      transition:0.3s;
+      cursor:pointer;
+    }
+
+    .timeline-card:hover{
+      transform:translateY(-5px);
+      border-left: 5px solid #1565c0;
+    }
+
+    .timeline-card h3{
+      color:#1565c0;
+      margin-bottom:10px;
+    }
+
+    .professores{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:30px;
+    }
+
+    .card{
+      background:white;
+      border-radius:20px;
+      overflow:hidden;
+      box-shadow:0 4px 12px rgba(0,0,0,0.08);
+      text-align:center;
+      transition:0.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-5px);
+    }
+
+    .card img{
+      width:100%;
+      height:300px;
+      object-fit:cover;
+    }
+
+    .card-content{
+      padding:20px;
+    }
+
+    .card-content h3{
+      color:#0d47a1;
+      margin-bottom:10px;
+    }
+
+    .listas{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:30px;
+    }
+
+    .lista-box{
+      background:white;
+      padding:25px;
+      border-radius:20px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .lista-box h3{
+      color:#1565c0;
+      margin-bottom:15px;
+    }
+
+    .lista-box ul{
+      padding-left:20px;
+    }
+
+    .games-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+    }
+
+    .game-card{
+      background:white;
+      border-radius:20px;
+      padding:30px;
+      text-align:center;
+      cursor:pointer;
+      box-shadow:0 4px 12px rgba(0,0,0,0.08);
+      transition:0.3s;
+    }
+
+    .game-card:hover{
+      transform:scale(1.05);
+      background:#1565c0;
+      color:white;
+    }
+
+    .game-icon{
+      font-size:50px;
+      margin-bottom:15px;
+    }
+
+    footer{
+      background:#0d47a1;
+      color:white;
+      text-align:center;
+      padding:25px;
+      margin-top:40px;
+    }
+
+    /* MODAIS */
+    .modal{
+      display:none;
+      position:fixed;
+      z-index:9999;
+      left:0;
+      top:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.8);
+      overflow:auto;
+      padding:30px;
+    }
+
+    .modal-content{
+      background:white;
+      max-width:900px;
+      margin:auto;
+      border-radius:20px;
+      padding:30px;
+      position:relative;
+      animation:fadeIn 0.3s ease;
+    }
+
+    .modal-text-content {
+      text-align: justify;
+      margin-top: 15px;
+      color: #333;
+    }
+
+    .modal-text-content p {
+      margin-bottom: 12px;
+    }
+
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+        transform:translateY(-20px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    .close{
+      position:absolute;
+      right:20px;
+      top:15px;
+      font-size:35px;
+      cursor:pointer;
+      color:#333;
+    }
+
+    .btn{
+      display:inline-block;
+      margin-top:20px;
+      padding:12px 25px;
+      background:#1565c0;
+      color:white;
+      text-decoration:none;
+      border-radius:10px;
+      font-weight:bold;
+    }
+
+    .btn:hover{
+      background:#0d47a1;
+    }
+
+    @media(max-width:768px){
+      .hero h1{
+        font-size:32px;
+      }
+
+      .listas{
+        grid-template-columns:1fr;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<header>
-  <div class="logo-box">
-    <img src="https://github.com/emanuelsantos-glitch/ads-e-matematica/blob/d82b7eade1e52ebf760a868aedd32b1ebe4be000/imagem_2026-05-03_171755088.png?raw=true" alt="Logos AESA CESA ADS Matemática">
-    
-    <div class="institutional-info">
-      <p>AESA – AUTARQUIA DE ENSINO SUPERIOR DE ARCOVERDE</p>
-      <p>CESA – CENTRO DE ENSINO SUPERIOR DE ARCOVERDE</p>
-      <p>CURSO DE LICENCIATURA EM MATEMÁTICA</p>
-      <p>CURSO SUPERIOR DE TECNOLOGIA EM ANÁLISE E DESENVOLVIMENTO DE SISTEMAS</p>
+  <header>
+    <div class="logos">
+      <img src="https://github.com/emanuelsantos-glitch/ads-e-matematica/blob/main/AESA.png?raw=true" alt="Logo AESA">
+      <img src="https://github.com/emanuelsantos-glitch/ads-e-matematica/blob/main/CESA.png?raw=true" alt="Logo CESA">
+      <img src="https://github.com/emanuelsantos-glitch/ads-e-matematica/blob/main/MATEMA.png?raw=true" alt="Logo Matemática">
+      <img src="https://github.com/emanuelsantos-glitch/ads-e-matematica/blob/main/SISTEMAS.png?raw=true" alt="Logo ADS">
     </div>
-  </div>
 
-  <div class="hero">
+    <div class="instituicao">AESA – AUTARQUIA DE ENSINO SUPERIOR DE ARCOVERDE</div>
+    <div class="instituicao">CESA – CENTRO DE ENSINO SUPERIOR DE ARCOVERDE</div>
+    <div class="instituicao">CURSO DE LICENCIATURA EM MATEMÁTICA</div>
+    <div class="instituicao">CURSO SUPERIOR DE TECNOLOGIA EM ANÁLISE E DESENVOLVIMENTO DE SISTEMAS</div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#jogos">Jogos</a></li>
+      <li><a href="#orientadores">Orientadores</a></li>
+      <li><a href="#apoio">Apoio</a></li>
+      <li><a href="#estudantes">Estudantes</a></li>
+      <li><a href="#estrutura">Estrutura</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
     <h1>Gamificação Interdisciplinar no Ensino Superior</h1>
     <p>Integração entre ADS e Matemática para criação de jogos educativos inovadores desenvolvidos na AESA-CESA.</p>
-    <div class="btn-group">
-      <a href="#sobre" class="btn">Conhecer o Projeto</a>
-      <a href="#jogos" class="btn">Ver Jogos</a>
-    </div>
-  </div>
-</header>
+  </section>
 
-<section id="sobre" class="container">
-  <h2>📘 Sobre o Projeto</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Introdução</h3>
-      <p style="text-align: justify; font-size: 0.95rem;">O ensino superior brasileiro enfrenta o desafio permanente de superar abordagens tradicionais centradas na transmissão passiva de conteúdo e de aproximar a formação acadêmica das demandas sociais contemporâneas. Nesse contexto, metodologias ativas de aprendizagem ganham espaço crescente, sendo a gamificação um dos recursos mais promissores tanto para o engajamento discente quanto para a produção de material pedagógico inovador (DETERDING et al., 2011).
-A gamificação consiste na aplicação de elementos típicos dos jogos — como pontuação, desafios progressivos, narrativas e recompensas — em contextos não lúdicos, com o objetivo de motivar comportamentos, promover o engajamento e facilitar a aprendizagem (KAPP, 2012). Quando integrada à formação em nível superior, essa abordagem pode cumprir uma função dupla: desenvolve competências nos estudantes que criam os jogos e gera recursos pedagógicos de qualidade para professores da educação básica.
-O presente trabalho relata a experiência em desenvolvimento na AESA-CESA, instituição localizada em Arcoverde, Pernambuco, onde os cursos de Tecnologia em Análise e Desenvolvimento de Sistemas (ADS) e Licenciatura em Matemática uniram esforços para criar cinco jogos digitais educativos. O projeto caracteriza-se como uma ação de extensão universitária com forte componente interdisciplinar, reunindo estudantes do 4.º período de ADS — habilitados no desenvolvimento de software — com estudantes do 5.º período de Matemática — aptos a garantir a solidez pedagógica e matemática dos conteúdos trabalhados nos jogos.
-O problema que motiva esta iniciativa é a escassez de materiais lúdicos digitais de qualidade alinhados à Base Nacional Comum Curricular (BNCC) e disponíveis gratuitamente para professores do ensino fundamental de regiões com acesso limitado a recursos tecnológicos. Ao mesmo tempo, existe uma lacuna na formação superior no que diz respeito a projetos que coloquem estudantes de diferentes cursos para trabalhar colaborativamente em soluções com impacto social concreto.
-Este artigo está organizado da seguinte forma: a seção 2 apresenta a fundamentação teórica sobre gamificação e interdisciplinaridade; a seção 3 descreve a metodologia e a estrutura do projeto; a seção 4 detalha os cinco jogos propostos; a seção 5 discute os resultados esperados e a seção 6 apresenta as considerações finais.
-</p>
-         </div>
-    
-    <div class="card">
-      <h3>Corpo Docente</h3>
-      <p style="margin-bottom: 15px; opacity: 0.8;">Professores Orientadores</p>
-      <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-        
-        <div class="teacher-card">
-          <img src="https://github.com/emanuelsantos-glitch/ads-e-matematica/blob/main/antonio.jpg?raw=true   " alt="Prof. Antônio César" class="teacher-photo">
-          <p><strong>ANTÔNIO CÉSAR</strong></p>
-          <p style="font-size: 0.65rem; opacity: 0.7;">Professor do Curso de Licenciatura em Matemática</p>
-          <p style="font-size: 0.45rem; opacity: 0.7;">Licenciado em Ciências com habilitação em Matemática</p>
-          <p style="font-size: 0.45rem; opacity: 0.7;">Especialista em Programação do Ensino da Matemática</p>
-        </div>
+  <section id="jogos">
+    <h2 class="section-title">Jogos Educativos</h2>
+    <div class="games-grid">
+      <div class="game-card" onclick="openGameModal('mercado')">
+        <div class="game-icon">🛒</div>
+        <h3>Mercado Matemático</h3>
+      </div>
 
-        <div class="teacher-card">
-          <img src="https://github.com/emanuelsantos-glitch/ads-e-matematica/blob/main/emanuel.png?raw=true" alt="Prof. Emanuel Natalino" class="teacher-photo">
-          <p><strong>EMANUEL NATALINO</strong></p>
-          <p style="font-size: 0.65rem; opacity: 0.7;">Coordenador e Professor no Curso de ADS</p>
-          <p style="font-size: 0.45rem; opacity: 0.7;">Tecnólogo em Análise e Desenvolvimento de Sistemas</p>
-          <p style="font-size: 0.45rem; opacity: 0.7;">Especialista em Docência para Educação Profissional e Tecnológica</p>
-                   
-        </div>
-      
-        <div class="card" style="margin-top: 25px; grid-column: 1 / -1;">
-  <h3 style="text-align: center; margin-bottom: 20px;">Coordenação do Curso de Matemática</h3>
-  <div style="display: flex; justify-content: center;">
-    <div class="teacher-card">
-      <img src="https://github.com/emanuelsantos-glitch/ads-e-matematica/blob/main/Jucelino.jpeg?raw=true" alt="Coordenador Emanuel Natalino" class="teacher-photo">
-      <p><strong>JUSCELINO ALVES ARCANJO</strong></p>
-      <p style="font-size: 0.75rem; color: var(--accent); font-weight: bold;">COORDENADOR DO CURSO DE MATEMÁTICA</p>
-      <p style="font-size: 0.65rem; opacity: 0.7; max-width: 300px; margin: 0 auto;">Responsável pela Coordenação do Curso de Licenciatura em Matemática</p>
-    </div>
-  </div>
-</div>
-      
-      
+      <div class="game-card" onclick="openGameModal('tabuleiro')">
+        <div class="game-icon">🎲</div>
+        <h3>Tabuleiro Matemático</h3>
+      </div>
+
+      <div class="game-card" onclick="openGameModal('bingo')">
+        <div class="game-icon">🎯</div>
+        <h3>Bingo Matemático</h3>
+      </div>
+
+      <div class="game-card" onclick="openGameModal('fubica')">
+        <div class="game-icon">🏀</div>
+        <h3>Fubica Matemática</h3>
+      </div>
+
+      <div class="game-card" onclick="openGameModal('operacoes')">
+        <div class="game-icon">🧮</div>
+        <h3>Operações Matemáticas</h3>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="container">
-  <h2>🧠 Metodologia</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Caracterização da Pesquisa</h3>
-      <p style="text-align: justify; font-size: 0.95rem;">Esta pesquisa caracteriza-se como pesquisa-ação participante (THIOLLENT, 2011), uma vez que os próprios professores coordenadores são participantes ativos do processo investigado. A abordagem é qualiquantitativa: qualitativa na análise dos processos colaborativos e dos artefatos produzidos; quantitativa na coleta de dados sobre engajamento dos estudantes e avaliação dos jogos por professores do ensino fundamental.</p>
-      <h3>Participantes</h3>
-      <p style="text-align: justify; font-size: 0.95rem;">Participam do projeto estudantes do 4º período de ADS, com foco em desenvolvimento técnico (algoritmos e web), e estudantes do 5º período de Matemática, responsáveis pela curadoria pedagógica e validação dos conteúdos conforme a BNCC.</p>
-      <h3>Estrutura de Colaboração</h3>
-      <p style="text-align: justify; font-size: 0.95rem;">O projeto foi organizado em cinco equipes mistas, cada uma responsável por um jogo. Cada equipe é formada por estudantes de ADS (responsáveis pelo desenvolvimento técnico) e estudantes de Matemática (responsáveis pelo design pedagógico e pela validação dos conteúdos). Essa configuração foi definida com base na proporção de entregas técnicas em relação às pedagógicas e na disponibilidade de carga horária de cada turma. A metodologia de desenvolvimento adotada é inspirada no Scrum, com sprints semanais, reuniões de revisão com os professores orientadores e uso de ferramentas colaborativas como Trello, GitHub e também aplicativos de grupo de mensagens. Essa escolha prepara os estudantes de ADS para o mercado de trabalho ao mesmo tempo que ensina os estudantes de Matemática a trabalhar em fluxos iterativos de validação de conteúdo.</p>
-    </div>
-  </div>
-</section>
-
-<section id="jogos" class="container">
-  <h2>🎮 Jogos Desenvolvidos</h2>
-  <div class="game-nav" id="gameTabs">
-    <div class="game-tab active" onclick="openGame(event, 'mercado')">🛒 Mercado</div>
-    <div class="game-tab" onclick="openGame(event, 'tabuleiro')">🎲 Tabuleiro</div>
-    <div class="game-tab" onclick="openGame(event, 'bingo')">🎯 Bingo</div>
-    <div class="game-tab" onclick="openGame(event, 'fubica')">🏀 Fubica</div>
-    <div class="game-tab" onclick="openGame(event, 'operacoes')">🧮 Operações</div>
-  </div>
-
-  <div id="mercado" class="game-content active">
-    <div class="card">
-      <h3>🛒 Mercado Matemático</h3>
-       <div style="margin-top: 20px;">
-        <a href="https://mercadomatematico.netlify.app" target="_blank" class="btn">Testar Jogo</a>
-      <div>
-      <p>Simulação de compras focada em porcentagem.</p>
-      <p style="font-size: 0.55rem; opacity: 0.7;"><strong>Descrição do Jogo:</strong>Em desenvolvimento</p>
-      <p style="font-size: 0.55rem; opacity: 0.7;"><strong>Público-Alvo:</strong>Em desenvolvimento</p>
-      <p style="font-size: 0.55rem; opacity: 0.7;"><strong>Assunto Trabalhado:</strong>Em desenvolvimento</p>
-      <p style="font-size: 0.55rem; opacity: 0.7;"><strong>Alinhamento com a BNCC:</strong>Em desenvolvimento</p>
-      <p style="font-size: 0.55rem; opacity: 0.7;"><strong>Habilidades e Competências Desenvolvidas:</strong>Em desenvolvimento</p>
-      <p style="font-size: 0.55rem; opacity: 0.7;"><strong>Código das Habilidades (BNCC):</strong>Em desenvolvimento</p>
-      <p style="font-size: 0.55rem; opacity: 0.7;"><strong>Ocasião de Uso:</strong>Em desenvolvimento</p>
-      <p style="font-size: 0.55rem; opacity: 0.7;"><strong>Plataforma do Jogo:</strong>Em desenvolvimento</p>
-      <p style="font-size: 0.55rem; opacity: 0.7;"><strong>Recursos Utilizados:</strong>Em desenvolvimento</p>
-          
-     
-        <p><strong>GRUPO:</strong></p>
-        <p></p>
-        <p style="font-size: 0.45rem; opacity: 0.7;">ANTONIO MEDEIROS DE ALMEIDA NETO - ADS</p>
-        <p style="font-size: 0.45rem; opacity: 0.7;">BEATRIZ RANDIELLY SAMPAIO DA SILVA - MATEMÁTICA</p>
-        <p style="font-size: 0.45rem; opacity: 0.7;">JOÃO VITOR FARIAS LINS DE LIMA - ADS</p>
-        <p style="font-size: 0.45rem; opacity: 0.7;">MARIA LUISA DE LIMA SANTOS - MATEMÁTICA</p>
-        <p style="font-size: 0.45rem; opacity: 0.7;">PEDRO AUGUSTO DE FREITAS SANTOS - ADS</p>
-        <p style="font-size: 0.45rem; opacity: 0.7;">RAINARA VITÓRIA CONCEIÇÃO LIMA - MATEMÁTICA</p>
-        <p style="font-size: 0.45rem; opacity: 0.7;">RAYSSA LAVINYA ARAÚJO DE SOUZA - MATEMÁTICA</p>
-       
+  <section id="orientadores">
+    <h2 class="section-title">Professores Orientadores</h2>
+    <div class="professores">
+      <div class="card">
+        <img src="https://github.com/emanuelsantos-glitch/ads-e-matematica/blob/main/antonio.jpg?raw=true" alt="Antônio César">
+        <div class="card-content">
+          <h3>ANTÔNIO CÉSAR</h3>
+          <p>Professor do Curso de Licenciatura em Matemática</p>
+          <p>Licenciado em Ciências com habilitação em Matemática</p>
+          <p>Especialista em Programação do Ensino da Matemática</p>
         </div>
-        
+      </div>
+
+      <div class="card">
+        <img src="https://github.com/emanuelsantos-glitch/ads-e-matematica/blob/main/emanuel.png?raw=true" alt="Emanuel Natalino">
+        <div class="card-content">
+          <h3>EMANUEL NATALINO</h3>
+          <p>Coordenador e Professor no Curso de ADS</p>
+          <p>Tecnólogo em Análise e Desenvolvimento de Sistemas</p>
+          <p>Especialista em Docência para Educação Profissional e Tecnológica</p>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div id="tabuleiro" class="game-content">
-    <div class="card"><h3>🎲 Tabuleiro Matemático</h3><p>Em desenvolvimento interdisciplinar.</p></div>
-  </div>
-  <div id="bingo" class="game-content">
-    <div class="card"><h3>🎯 Bingo Matemático</h3><p>Em desenvolvimento interdisciplinar.</p></div>
-  </div>
-  <div id="fubica" class="game-content">
-    <div class="card"><h3>🏀 Fubica Matemática</h3></div>
-<div style="margin-top: 20px;">
-        <a href="https://fubica-matematica.vercel.app/" target="_blank" class="btn">Testar Jogo</a>
-      <div>
-      <p>Jogo de fubica voltado para funções e racioncínio lógico.</p>
-      <p style="font-size: 0.55rem; opacity: 0.7;"><strong>Descrição do Jogo:</strong> Concretizar o aprendizado das funções e testar seus conhecimentos. O jogador possui dois dados e duas peças para jogar, ao jogar os dados ele vai poder andar nas casas e em cada casa que ele parar terá uma função para responder. Existe os desafios de responder corretamente cada função. Nas casas premiadas ao acertar o jogador adianta duas casas. A mecânica principal do jogo é a resolução de funções por meio da substituição de valores, permitindo ao aluno avançar no tabuleiro conforme seus acertos.</p>
-      <p style="font-size: 0.55rem; opacity: 0.7;"><strong>Público-Alvo:</strong> Ensino Fundamental II 9º ano</p>
-      <p style="font-size: 0.55rem; opacity: 0.7;"><strong>Assunto Trabalhado:</strong> Funções e Racioncínio Lógico</p>
-      <p style="font-size: 0.55rem; opacity: 0.7;"><strong>Alinhamento com a BNCC:</strong> O jogo fubica matemática contribui para o desenvolvimento de diversas habilidades cognitivas e educacionais, como o raciocínio lógico, o pensamento crítico e a tomada de decisão. Além disso, estimula a autonomia no aprendizado, pois os alunos precisam interpretar e resolver desafios de forma independente. Durante a atividade, os estudantes também desenvolvem a capacidade de interpretar expressões algébricas.</p>
-      <p style="font-size: 0.55rem; opacity: 0.7;"><strong>Habilidades e Competências Desenvolvidas:</strong> Raciocínio lógico, resolução de problemas, pensamento crítico, autonomia no aprendizado e pensamento algébrico</p>
-      <p style="font-size: 0.55rem; opacity: 0.7;"><strong>Código das Habilidades (BNCC):</strong> EF09MA06PE: Compreender as funções como relações de dependência unívoca entre duas variáveis e suas representações numérica, algébrica e gráfica e utilizar esse conceito para analisar situações que envolvam relações funcionais entre duas variáveis, explorando diferentes tecnologias.</p>
-      <p style="font-size: 0.55rem; opacity: 0.7;"><strong>Ocasião de Uso:</strong> Em sala de aula como reforço de conteúdo, atividade prática ou atividade para finalizar conteúdo</p>
-      <p style="font-size: 0.55rem; opacity: 0.7;"><strong>Plataforma do Jogo:</strong> Web Responsivo, Jogo digital (fubica)</p>
-      <p style="font-size: 0.55rem; opacity: 0.7;"><strong>Recursos Utilizados:</strong> Linguagens: JavaScript, HTML e CSS. Cache do navegador Design: Figma</p>
-          
-     
-        <p><strong>GRUPO:</strong></p>
-        <p></p>
-        <p style="font-size: 0.45rem; opacity: 0.7;">APOLIANA FREIRE - Matemática</p>
-        <p style="font-size: 0.45rem; opacity: 0.7;">DANILO LINS FARIAS - Matemática</p>
-        <p style="font-size: 0.45rem; opacity: 0.7;">MARIA DENISE FARIAS - Matemática</p>
-        <p style="font-size: 0.45rem; opacity: 0.7;">TEREZA VITORIA PEREIRA SILVA - Matemática</p>
-        <p style="font-size: 0.45rem; opacity: 0.7;">TIAGO CELESTINO DE CARVALHO ALVES - ADS</p>
-
-       
+  <section id="apoio">
+    <h2 class="section-title">Apoio Institucional</h2>
+    <div class="professores">
+      <div class="card">
+        <img src="https://github.com/emanuelsantos-glitch/ads-e-matematica/blob/main/Jucelino.jpeg?raw=true" alt="Juscelino">
+        <div class="card-content">
+          <h3>JUSCELINO ALVES ARCANJO</h3>
+          <p>Coordenador do Curso de Matemática</p>
         </div>
+      </div>
 
+      <div class="card">
+        <img src="https://github.com/emanuelsantos-glitch/ads-e-matematica/blob/main/dora.png?raw=true" alt="Maria das Dores">
+        <div class="card-content">
+          <h3>Maria das Dores</h3>
+          <p>Diretora do CESA</p>
+        </div>
+      </div>
 
+      <div class="card">
+        <img src="https://github.com/emanuelsantos-glitch/ads-e-matematica/blob/main/ruy.png?raw=true" alt="Ruy Bandeira">
+        <div class="card-content">
+          <h3>Ruy Bandeira</h3>
+          <p>Vice Diretora do CESA</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://github.com/emanuelsantos-glitch/ads-e-matematica/blob/main/franklin.png?raw=true" alt="Franklin Freire">
+        <div class="card-content">
+          <h3>Franklin Freire</h3>
+          <p>Presidente da AESA</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="estudantes">
+    <h2 class="section-title">Estudantes</h2>
+    <div class="listas">
+      <div class="lista-box">
+        <h3>5º Período – Matemática</h3>
+        <ul>
+          <li>Aluno 01</li>
+          <li>Aluno 02</li>
+          <li>Aluno 03</li>
+          <li>Aluno 04</li>
+        </ul>
+      </div>
+
+      <div class="lista-box">
+        <h3>4º Período – ADS</h3>
+        <ul>
+          <li>Aluno 01</li>
+          <li>Aluno 02</li>
+          <li>Aluno 03</li>
+          <li>Aluno 04</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="estrutura">
+    <h2 class="section-title">Estrutura do Projeto</h2>
+    <div class="timeline">
+      <div class="timeline-card" onclick="openStructureModal('introducao')">
+        <h3>INTRODUÇÃO</h3>
+        <p>Apresentação geral, panorama do ensino e objetivos do projeto.</p>
+      </div>
+
+      <div class="timeline-card" onclick="openStructureModal('fundamentacao')">
+        <h3>1. FUNDAMENTAÇÃO TEÓRICA</h3>
+        <p>Gamificação, interdisciplinaridade e extensão universitária.</p>
+      </div>
+
+      <div class="timeline-card" onclick="openStructureModal('metodologia')">
+        <h3>2. METODOLOGIA</h3>
+        <p>Caracterização da pesquisa-ação, participantes e sprints de desenvolvimento.</p>
+      </div>
+
+      <div class="timeline-card" onclick="openStructureModal('jogos_desenvolvidos')">
+        <h3>3. JOGOS DESENVOLVIDOS</h3>
+        <p>Mapeamento e detalhes pedagógicos dos 5 jogos digitais criados.</p>
+      </div>
+
+      <div class="timeline-card" onclick="openStructureModal('resultados')">
+        <h3>4. RESULTADOS ESPERADOS</h3>
+        <p>Impactos pedagógicos na educação básica e formação dos acadêmicos.</p>
+      </div>
+
+      <div class="timeline-card" onclick="openStructureModal('consideracoes')">
+        <h3>5. CONSIDERAÇÕES FINAIS</h3>
+        <p>Reflexões sobre a fluência digital, integração interna e encerramento.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre">
+    <h2 class="section-title">Sobre o Projeto</h2>
+    <div class="pdf-container">
+      <iframe src="https://drive.google.com/file/d/1A7pijlpnPxXjULdJzynqK36LWHK9jy5_/preview"></iframe>
+    </div>
+  </section>
+
+  <div id="structure-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeStructureModal()">&times;</span>
+      <h2 id="structure-modal-title" style="color:#0d47a1; border-bottom:2px solid #1565c0; padding-bottom:10px;"></h2>
+      <div id="structure-modal-text" class="modal-text-content"></div>
+    </div>
   </div>
-  <div id="operacoes" class="game-content">
-    <div class="card"><h3>🧮 Operações Matemáticas</h3><p>Em desenvolvimento interdisciplinar.</p></div>
+
+  <div id="game-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeGameModal()">&times;</span>
+      <h2 id="game-modal-title" style="color:#0d47a1;"></h2>
+      <div style="margin-top:20px; line-height:1.8;">
+        <p><strong>Descrição do Jogo:</strong> <span id="game-desc">Em desenvolvimento</span></p>
+        <p><strong>Público-Alvo:</strong> <span id="game-target">Em desenvolvimento</span></p>
+        <p><strong>Assunto Trabalhado:</strong> <span id="game-subject">Em desenvolvimento</span></p>
+        <p><strong>Alinhamento com a BNCC:</strong> <span id="game-bncc">Em desenvolvimento</span></p>
+        <p><strong>Habilidades e Competências:</strong> <span id="game-skills">Em desenvolvimento</span></p>
+        <p><strong>Código das Habilidades (BNCC):</strong> <span id="game-code">Em desenvolvimento</span></p>
+        <p><strong>Ocasião de Uso:</strong> <span id="game-use">Em desenvolvimento</span></p>
+        <p><strong>Plataforma do Jogo:</strong> <span id="game-platform">Em desenvolvimento</span></p>
+        <p><strong>Recursos Utilizados:</strong> <span id="game-resources">Em desenvolvimento</span></p>
+        <br>
+        <p><strong>Equipe:</strong> <span id="game-team">Lista com o nome dos estudantes</span></p>
+      </div>
+      <a id="game-link" href="#" target="_blank" class="btn">Abrir Jogo</a>
+    </div>
   </div>
-</section>
 
-<section class="container">
-  <h2>📝 Considerações Finais</h2>
-  <div class="card">
-    <p style="text-align: justify; font-size: 0.95rem;">
-      A colaboração entre tecnologia e licenciatura na AESA-CESA é especialmente produtiva. Enquanto os estudantes de ADS ganham contexto pedagógico, os de Matemática desenvolvem fluência digital, criando inovação no interior de Pernambuco.
-    </p>
-  </div>
-</section>
+  <footer>
+    © 2026 - Projeto Gamificação Interdisciplinar no Ensino Superior | AESA-CESA
+  </footer>
 
-<footer>
-  <p>© 2026 - Emanuel Santos | ADS - AESA/CESA</p>
-  <p>Arcoverde - PE</p>
-</footer>
+  <script>
+    // TEXTOS COMPLETOS DA ESTRUTURA DO PROJETO
+    const estruturas = {
+      introducao: {
+        titulo: "📘 Introdução",
+        text: "<p>O ensino superior enfrenta o desafio permanente de superar abordagens tradicionais centradas na transmissão passiva de conteúdo e de aproximar a formação acadêmica das demandas sociais contemporâneas. Metodologias ativas, como a gamificação, ganham espaço crucial para motivar e facilitar a aprendizagem.</p><p>O presente trabalho relata a experiência desenvolvida na AESA-CESA, em Arcoverde-PE, onde os cursos de Análise e Desenvolvimento de Sistemas (ADS) e Licenciatura em Matemática uniram esforços para criar cinco jogos digitais educativos como uma ação de extensão universitária de forte impacto social.</p>"
+      },
+      fundamentacao: {
+        titulo: "📚 1. Fundamentação Teórica",
+        texto: "<p>A fundamentação do projeto baseia-se na interseção de três eixos fundamentais: a gamificação no ecossistema educacional (KAPP, 2012), a interdisciplinaridade prática no ensino superior e a extensão universitária como agente transformador da comunidade regional.</p><p>A aplicação de mecânicas de jogos (pontuações, feedbacks e narrativas lúdicas) em contextos pedagógicos promove um nível superior de engajamento cognitivo, consolidando o conhecimento matemático de forma leve e duradoura.</p>"
+      },
+      metodologia: {
+        titulo: "🧠 2. Metodologia",
+        texto: "<p>Esta pesquisa caracteriza-se como pesquisa-ação participante (THIOLLENT, 2011), onde os professores e coordenadores atuam ativamente no processo investigado. A abordagem é qualiquantitativa.</p><p>As equipes de desenvolvimento foram constituídas sob uma lógica ágil inspirada no framework Scrum, estabelecendo reuniões semanais de acompanhamento e divisões claras de papéis: os acadêmicos de Matemática atuaram na curadoria de conteúdo e validação das habilidades BNCC, enquanto os estudantes de ADS executaram o desenvolvimento lógico, codificação e design de interface.</p>"
+      },
+      jogos_desenvolvidos: {
+        titulo: "🎮 3. Jogos Desenvolvidos",
+        texto: "<p>O núcleo produtivo da cooperação resultou em cinco propostas lúdicas complementares voltadas para o Ensino Fundamental:</p><ul><li><strong>Mercado Matemático:</strong> Focado em simulações comerciais e porcentagens.</li><li><strong>Tabuleiro Matemático:</strong> Estrutura clássica adaptada para resolução de equações.</li><li><strong>Bingo Matemático:</strong> Sorteio focado no cálculo mental ágil.</li><li><strong>Fubica Matemática:</strong> Exploração prática e visual de funções e pensamento algébrico.</li><li><strong>Operações Matemáticas:</strong> Consolidação de operações aritméticas básicas de forma lúdica.</li></ul>"
+      },
+      resultados: {
+        titulo: "🚀 4. Resultados Esperados",
+        texto: "<p>Espera-se fornecer aos professores da educação básica da rede pública de Arcoverde e região um ecossistema de recursos didáticos inteiramente gratuitos, portáveis e alinhados às diretrizes nacionais.</p><p>Para os universitários da AESA-CESA, o resultado principal reside na vivência profissional prática: desenvolvedores aprendem a traduzir requisitos abstratos de clientes, e futuros professores desenvolvem sólida fluência e governança digital.</p>"
+      },
+      consideracoes: {
+        titulo: "📝 5. Considerações Finais",
+        texto: "<p>A colaboração direta entre tecnologia (ADS) e licenciatura (Matemática) mostra-se um modelo altamente replicável e produtivo dentro do cenário acadêmico.</p><p>A união prova que o desenvolvimento de softwares pedagógicos contextualizados é capaz de diminuir distâncias tecnológicas e democratizar ferramentas inovadoras no interior do estado de Pernambuco.</p>"
+      }
+    };
 
-<script>
-  function openGame(evt, gameName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("game-content");
-    for (i = 0; i < tabcontent.length; i++) { tabcontent[i].style.display = "none"; }
-    tablinks = document.getElementsByClassName("game-tab");
-    for (i = 0; i < tablinks.length; i++) { tablinks[i].className = tablinks[i].className.replace(" active", ""); }
-    document.getElementById(gameName).style.display = "block";
-    evt.currentTarget.className += " active";
-  }
-</script>
+    // INFORMAÇÕES DOS JOGOS
+    const jogos = {
+      mercado: {
+        titulo: "🛒 Mercado Matemático",
+        link: "https://mercadomatematico.netlify.app",
+        desc: "Simulação de compras focada em transações comerciais e porcentagem.",
+        target: "Ensino Fundamental II",
+        subject: "Porcentagem, Juros Básicos e Operações Decimais",
+        bncc: "Desenvolvimento do pensamento financeiro e raciocínio lógico em cenários comerciais.",
+        skills: "Resolução de problemas do cotidiano, cálculo mental de descontos e acréscimos.",
+        code: "Em definição",
+        use: "Sala de aula, laboratório de informática ou atividades complementares.",
+        platform: "Web Responsivo",
+        resources: "HTML, CSS, JavaScript",
+        team: "ANTONIO MEDEIROS, BEATRIZ RANDIELLY, JOÃO VITOR, MARIA LUISA, PEDRO AUGUSTO, RAINARA VITÓRIA, RAYSSA LAVINYA."
+      },
+      tabuleiro: {
+        titulo: "🎲 Tabuleiro Matemático",
+        link: "#",
+        desc: "Em desenvolvimento interdisciplinar.",
+        target: "Em desenvolvimento", subject: "Em desenvolvimento", bncc: "Em desenvolvimento", skills: "Em desenvolvimento", code: "Em desenvolvimento", use: "Em desenvolvimento", platform: "Em desenvolvimento", resources: "Em desenvolvimento", team: "Estudantes em fase de alocação."
+      },
+      bingo: {
+        titulo: "🎯 Bingo Matemático",
+        link: "#",
+        desc: "Em desenvolvimento interdisciplinar.",
+        target: "Em desenvolvimento", subject: "Em desenvolvimento", bncc: "Em desenvolvimento", skills: "Em desenvolvimento", code: "Em desenvolvimento", use: "Em desenvolvimento", platform: "Em desenvolvimento", resources: "Em desenvolvimento", team: "Estudantes em fase de alocação."
+      },
+      fubica: {
+        titulo: "🏀 Fubica Matemática",
+        link: "https://fubica-matematica.vercel.app/",
+        desc: "Mecânica clássica de trilha adaptada à substituição de valores e progressão por acertos de funções algébricas.",
+        target: "Ensino Fundamental II - 9º ano",
+        subject: "Funções e Raciocínio Lógico",
+        bncc: "Estimula a autonomia no aprendizado, pensamento crítico e interpretação de expressões algébricas de dependência.",
+        skills: "Raciocínio lógico, resolução de problemas e pensamento algébrico.",
+        code: "EF09MA06PE: Compreender as funções como relações de dependência unívoca entre duas variáveis...",
+        use: "Em sala de aula como reforço de conteúdo ou atividade prática avaliativa.",
+        platform: "Web Responsivo (Desktop e Mobile)",
+        resources: "JavaScript, HTML, CSS e Figma para UI/UX.",
+        team: "APOLIANA FREIRE, DANILO LINS, MARIA DENISE, TEREZA VITORIA, TIAGO CELESTINO."
+      },
+      operacoes: {
+        titulo: "🧮 Operações Matemáticas",
+        link: "#",
+        desc: "Em desenvolvimento interdisciplinar.",
+        target: "Em desenvolvimento", subject: "Em desenvolvimento", bncc: "Em desenvolvimento", skills: "Em desenvolvimento", code: "Em desenvolvimento", use: "Em desenvolvimento", platform: "Em desenvolvimento", resources: "Em desenvolvimento", team: "Estudantes em fase de alocação."
+      }
+    };
+
+    // CONTROLE DO MODAL DE ESTRUTURA
+    function openStructureModal(secao) {
+      document.getElementById("structure-modal").style.display = "block";
+      document.getElementById("structure-modal-title").innerText = estruturas[secao].titulo;
+      document.getElementById("structure-modal-text").innerHTML = estruturas[secao].text || estruturas[secao].texto;
+    }
+
+    function closeStructureModal() {
+      document.getElementById("structure-modal").style.display = "none";
+    }
+
+    // CONTROLE DO MODAL DE JOGOS
+    function openGameModal(jogo) {
+      document.getElementById("game-modal").style.display = "block";
+      document.getElementById("game-modal-title").innerText = jogos[jogo].titulo;
+      document.getElementById("game-desc").innerText = jogos[jogo].desc;
+      document.getElementById("game-target").innerText = jogos[jogo].target;
+      document.getElementById("game-subject").innerText = jogos[jogo].subject;
+      document.getElementById("game-bncc").innerText = jogos[jogo].bncc;
+      document.getElementById("game-skills").innerText = jogos[jogo].skills; // Correção efetuada aqui
+      document.getElementById("game-code").innerText = jogos[jogo].code;
+      document.getElementById("game-use").innerText = jogos[jogo].use;
+      document.getElementById("game-platform").innerText = jogos[jogo].platform;
+      document.getElementById("game-resources").innerText = jogos[jogo].resources;
+      document.getElementById("game-team").innerText = jogos[jogo].team;
+      document.getElementById("game-link").href = jogos[jogo].link;
+    }
+
+    function closeGameModal() {
+      document.getElementById("game-modal").style.display = "none";
+    }
+
+    // FECHAMENTO AO CLICAR FORA DA CAIXA BRANCA
+    window.onclick = function(event) {
+      const structModal = document.getElementById("structure-modal");
+      const gameModal = document.getElementById("game-modal");
+
+      if (event.target == structModal) {
+        structModal.style.display = "none";
+      }
+      if (event.target == gameModal) {
+        gameModal.style.display = "none";
+      }
+    }
+  </script>
 
 </body>
 </html>
