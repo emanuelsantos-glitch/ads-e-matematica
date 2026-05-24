@@ -303,6 +303,7 @@
       text-decoration:none;
       border-radius:10px;
       font-weight:bold;
+      border:none;
     }
 
     .btn:hover{
@@ -490,7 +491,6 @@
           <li>MARCOS HENRIQUE CARVALHO DE SOUZA</li>
           <li>PEDRO AUGUSTO DE FREITAS SANTOS</li>
           <li>TIAGO CELESTINO DE CARVALHO ALVES</li>
-
         </ul>
       </div>
     </div>
@@ -551,19 +551,28 @@
       <span class="close" onclick="closeGameModal()">&times;</span>
       <h2 id="game-modal-title" style="color:#0d47a1;"></h2>
       <div style="margin-top:20px; line-height:1.8;">
-        <p><strong>Descrição do Jogo:</strong> <span id="game-desc">Em desenvolvimento</span></p>
-        <p><strong>Público-Alvo:</strong> <span id="game-target">Em desenvolvimento</span></p>
-        <p><strong>Assunto Trabalhado:</strong> <span id="game-subject">Em desenvolvimento</span></p>
-        <p><strong>Alinhamento com a BNCC:</strong> <span id="game-bncc">Em desenvolvimento</span></p>
-        <p><strong>Habilidades e Competências:</strong> <span id="game-skills">Em desenvolvimento</span></p>
-        <p><strong>Código das Habilidades (BNCC):</strong> <span id="game-code">Em desenvolvimento</span></p>
-        <p><strong>Ocasião de Uso:</strong> <span id="game-use">Em desenvolvimento</span></p>
-        <p><strong>Plataforma do Jogo:</strong> <span id="game-platform">Em desenvolvimento</span></p>
-        <p><strong>Recursos Utilizados:</strong> <span id="game-resources">Em desenvolvimento</span></p>
+        <p><strong>Descrição do Jogo:</strong> <span id="game-desc"></span></p>
+        <p><strong>Público-Alvo:</strong> <span id="game-target"></span></p>
+        <p><strong>Assunto Trabalhado:</strong> <span id="game-subject"></span></p>
+        <p><strong>Alinhamento com a BNCC:</strong> <span id="game-bncc"></span></p>
+        <p><strong>Habilidades e Competências:</strong> <span id="game-skills"></span></p>
+        <p><strong>Código das Habilidades (BNCC):</strong> <span id="game-code"></span></p>
+        <p><strong>Ocasião de Uso:</strong> <span id="game-use"></span></p>
+        <p><strong>Plataforma do Jogo:</strong> <span id="game-platform"></span></p>
+        <p><strong>Recursos Utilizados:</strong> <span id="game-resources"></span></p>
         <br>
-        <p><strong>Equipe:</strong> <span id="game-team">Lista com o nome dos estudantes</span></p>
+        <p><strong>Equipe:</strong> <span id="game-team"></span></p>
+        
+        <div id="manual-section" style="display:none; margin-top:20px; padding:20px; background:#f0f4f8; border-radius:15px; border-left:5px solid #0d47a1; max-height: 400px; overflow-y: auto;">
+          <h3 style="color:#0d47a1; margin-bottom:10px; display: flex; align-items: center; gap: 8px;">🎲 Manual do Jogo: Quiz & Ladders</h3>
+          <div id="game-manual-text" style="text-align:justify; color: #333;"></div>
+        </div>
       </div>
-      <a id="game-link" href="#" target="_blank" class="btn">Abrir Jogo</a>
+      
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px;">
+        <a id="game-link" href="#" target="_blank" class="btn">Abrir Jogo</a>
+        <button id="manual-btn" onclick="toggleManual()" class="btn" style="background:#ffd54f; color:#222; cursor:pointer;">📖 Manual do Jogo</button>
+      </div>
     </div>
   </div>
 
@@ -580,7 +589,7 @@
       },
       fundamentacao: {
         titulo: "📚 1. Fundamentação Teórica",
-        texto: "<p>A fundamentação do projeto baseia-se na interseção de três eixos fundamentais: a gamificação no ecossistema educacional (KAPP, 2012), a interdisciplinaridade prática no ensino superior e a extensão universitária como agente transformador da comunidade regional.</p><p>A aplicação de mecânicas de jogos (pontuações, feedbacks e narrativas lúdicas) em contextos pedagógicos promove um nível superior de engajamento cognitivo, consolidando o conhecimento matemático de forma leve e duradoura.</p>"
+        texto: "<p>A fundamentação do projeto baseia-se na interseção de três eixos fundamentais: a gamificação no ecossistema educacional (KAPP, 2012), a interdisciplinaridade prática no ensino superior e a extensão universitária como agente transformador da comunidade regional.</p><p>A aplicação de mecânicas de jogos (pontuações, feedbacks e narrativas lúdicas) in contextos pedagógicos promove um nível superior de engajamento cognitivo, consolidando o conhecimento matemático de forma leve e duradoura.</p>"
       },
       metodologia: {
         titulo: "🧠 2. Metodologia",
@@ -617,10 +626,55 @@
         team: "ANTONIO MEDEIROS, BEATRIZ RANDIELLY, JOÃO VITOR, MARIA LUISA, PEDRO AUGUSTO, RAINARA VITÓRIA, RAYSSA LAVINYA."
       },
       tabuleiro: {
-        titulo: "🎲 Tabuleiro Matemático",
+        titulo: "🎲 Tabuleiro Matemático (Quiz & Ladders)",
         link: "https://ladders-snakes-matematica.vercel.app/",
-        desc: "Em desenvolvimento interdisciplinar.",
-        target: "Em desenvolvimento", subject: "Em desenvolvimento", bncc: "Em desenvolvimento", skills: "Em desenvolvimento", code: "Em desenvolvimento", use: "Em desenvolvimento", platform: "Em desenvolvimento", resources: "Em desenvolvimento", team: "Estudantes em fase de alocação."
+        desc: "Jogo de trilha dinâmico baseado em perguntas e respostas adaptadas ao nível de escolaridade selecionado. Integra penalidades estratégicas, itens coletáveis de vantagem no mapa e mecânicas clássicas de cobras e escadas.",
+        target: "Ensino Fundamental II (6º ao 9º Ano)", 
+        subject: "Aritmética, Geometria, Álgebra e Raciocínio Lógico Proporcional", 
+        bncc: "Desenvolve tomada de decisão em equipe, estratégia sob tempo limite e fixação ativa de conceitos de exatas da base nacional.", 
+        skills: "Resolução ativa de problemas matemáticos cronometrados, gerenciamento de riscos e colaboração social.", 
+        code: "Competências gerais de Matemática do 6º ao 9º ano com gradação de tempo e dificuldade complexa configurável.", 
+        use: "Atividade competitiva em grupos em sala de aula, gincanas digitais pedagógicas ou laboratório integrado.", 
+        platform: "Web Responsivo (Desktop e Mobile)", 
+        resources: "JavaScript Moderno (ES6+), HTML5 Estrutural, CSS Grid & Flexbox, Engenharia de Estados e Feedbacks Auditivos.", 
+        team: "ANDRIELY DE ARAÚJO ALVES, CARLOS EDUARDO DA SILVA TENÓRIO, COSMO RAMOS ANDRADE, HIGOR FERNANDO FREITAS DE CARVALHO, KAWÃ DE ARAÚJO GOMES, LUCAS MEDEIROS CORREIA.",
+        manual: `
+          <p><strong>Bem-vindo ao Quiz & Ladders!</strong> Um jogo de tabuleiro interativo e educativo onde o conhecimento em matemática é o seu motor para avançar rumo à vitória.</p>
+          <br>
+          <p><strong>🎯 Objetivo:</strong><br>O objetivo principal é ser a primeira equipe a alcançar a casa 100 no tabuleiro. Para avançar, as equipes devem acertar perguntas de matemática referentes à série escolhida.</p>
+          <br>
+          <p><strong>🚀 Como Começar:</strong><br>
+          • <strong>Escolha a Série:</strong> Na tela inicial, selecione o nível de dificuldade (6º, 7º, 8º ou 9º ano). O tempo de resposta para cada pergunta é adaptado à dificuldade (ex: 30s para o 6º ano, 15s para o 9º ano).<br>
+          • <strong>Número de Equipes:</strong> Escolha se vão jogar 2, 3 ou 4 equipes.<br>
+          • Clique em <strong>Iniciar Jogo</strong>.</p>
+          <br>
+          <p><strong>🕹️ Como Jogar (O Turno):</strong><br>
+          O jogo funciona em rodadas. Quando for a vez da sua equipe, siga o fluxo:<br>
+          1. <strong>Sortear Pergunta:</strong> Clique no botão "🎲 SORTEAR PERGUNTA". O sistema escolherá uma pergunta aleatória da sua série (o sistema garante que as perguntas não se repetem até que todas tenham sido usadas!).<br>
+          2. <strong>Responder:</strong> A equipe lê a pergunta e tem um tempo limite para escolher a alternativa correta.<br>
+          • <span style="color: #2e7d32;"><strong>✅ Acertou:</strong></span> O dado é rolado automaticamente e a equipe avança o número de casas correspondente.<br>
+          • <span style="color: #c62828;"><strong>❌ Errou ou o Tempo Acabou:</strong></span> A equipe toma um "Strike" (erro) e a vez passa para a próxima equipe. Acumular 3 erros seguidos zera os erros, mas encerra a sua vez sob uma penalidade sonora!</p>
+          <br>
+          <p><strong>🔄 Passar, Repassar e Devolver:</strong><br>
+          Se uma equipe não souber a resposta, ela pode usar opções estratégicas em vez de chutar:<br>
+          • <strong>1º Passo (Passar):</strong> A equipe passa a pergunta para a próxima equipe. Se a próxima equipe acertar, o valor do dado é <strong>Multiplicado por 2 (Dobro)</strong>!<br>
+          • <strong>2º Passo (Repassar):</strong> Se a segunda equipe também não souber, ela repassa para a terceira equipe. Se a terceira acertar, o valor do dado é <strong>Multiplicado por 3 (Triplo)</strong>!<br>
+          • <strong>3º Passo (Devolver):</strong> Se a terceira equipe não souber, a pergunta é devolvida para a equipe que a sorteou inicialmente. Essa equipe é obrigada a responder.<br>
+          • <span style="color: #c62828;"><strong>⚠️ Se errar na Devolvida:</strong></span> A equipe sofre a penalidade máxima e perde o seu próximo turno inteiro.</p>
+          <br>
+          <p><strong>🐍 O Tabuleiro (Mecânicas Especiais):</strong><br>
+          • <strong>Subida (🪜 Escadas):</strong> Caiu na base de uma escada? Parabéns! Você subiu e cortou caminho no tabuleiro.<br>
+          • <strong>Queda (🐍 Cobras):</strong> Caiu na cabeça de uma cobra? Que pena! Você desce e volta várias casas.<br>
+          • <strong>💥 Colisão (Pisão em outra equipe):</strong> Se você parar na mesma casa onde outra equipe já está, você dá um "pisão" nela! A equipe que tomou o pisão volta imediatamente para a casa 0 (Início).</p>
+          <br>
+          <p><strong>🎁 Power-Ups (Itens Especiais):</strong><br>
+          Algumas casas do tabuleiro brilham com itens mágicos. Se você parar nelas, coleta um poder:<br>
+          • <strong>🛡️ Imunidade (Escudo Azul):</strong> Te protege de uma Cobra ou de um Pisão. Se você cair numa cobra ou alguém pisar em você enquanto tem este item, o escudo é quebrado, mas você não volta casas.<br>
+          • <strong>⚡ Passo Duplo (Raio Amarelo):</strong> Na próxima vez que você acertar uma pergunta, o valor do seu dado será multiplicado por 2. (Pode acumular com os multiplicadores de passar/repassar!).</p>
+          <br>
+          <p><strong>🏆 Fim de Jogo:</strong><br>
+          A primeira equipe que alcançar ou ultrapassar a marca de 100 casas através de uma jogada é coroada a grande campeã, e a tela de celebração será ativada!</p>
+        `
       },
       bingo: {
         titulo: "🎯 Bingo Matemático",
@@ -646,7 +700,7 @@
         titulo: "🧮 Operações Matemáticas",
         link: "https://view.genially.com/6a04a32e5a2da6c17dbaf966",
         desc: "Em desenvolvimento interdisciplinar.",
-        target: "Em desenvolvimento", subject: "Em desenvolvimento", bncc: "Em desenvolvimento", skills: "Em desenvolvimento", code: "Em desenvolvimento", use: "Em desenvolvimento", platform: "Em desenvolvimento", resources: "Em desenvolvimento", team: "Estudantes em fase de alocação."
+        target: "Em desenvolvimento", subject: "Em desenvolvimento", bncc: "Em desenvolvimento", skills: "Em desenvolvimento", code: "Em desenvolvimento", use: "Em desenvolvimento", platform: "Em development", resources: "Em desenvolvimento", team: "Estudantes em fase de alocação."
       }
     };
 
@@ -663,23 +717,48 @@
 
     // CONTROLE DO MODAL DE JOGOS
     function openGameModal(jogo) {
+      const jogoAtual = jogos[jogo];
+
       document.getElementById("game-modal").style.display = "block";
-      document.getElementById("game-modal-title").innerText = jogos[jogo].titulo;
-      document.getElementById("game-desc").innerText = jogos[jogo].desc;
-      document.getElementById("game-target").innerText = jogos[jogo].target;
-      document.getElementById("game-subject").innerText = jogos[jogo].subject;
-      document.getElementById("game-bncc").innerText = jogos[jogo].bncc;
-      document.getElementById("game-skills").innerText = jogos[jogo].skills; // Correção efetuada aqui
-      document.getElementById("game-code").innerText = jogos[jogo].code;
-      document.getElementById("game-use").innerText = jogos[jogo].use;
-      document.getElementById("game-platform").innerText = jogos[jogo].platform;
-      document.getElementById("game-resources").innerText = jogos[jogo].resources;
-      document.getElementById("game-team").innerText = jogos[jogo].team;
-      document.getElementById("game-link").href = jogos[jogo].link;
+      document.getElementById("game-modal-title").innerText = jogoAtual.titulo;
+      document.getElementById("game-desc").innerText = jogoAtual.desc;
+      document.getElementById("game-target").innerText = jogoAtual.target;
+      document.getElementById("game-subject").innerText = jogoAtual.subject;
+      document.getElementById("game-bncc").innerText = jogoAtual.bncc;
+      document.getElementById("game-skills").innerText = jogoAtual.skills;
+      document.getElementById("game-code").innerText = jogoAtual.code;
+      document.getElementById("game-use").innerText = jogoAtual.use;
+      document.getElementById("game-platform").innerText = jogoAtual.platform;
+      document.getElementById("game-resources").innerText = jogoAtual.resources;
+      document.getElementById("game-team").innerText = jogoAtual.team;
+      document.getElementById("game-link").href = jogoAtual.link;
+
+      // Se o jogo conter a propriedade manual populada, exibe o botão correspondente
+      if (jogoAtual.manual) {
+        document.getElementById("manual-btn").style.display = "inline-block";
+        document.getElementById("game-manual-text").innerHTML = jogoAtual.manual;
+      } else {
+        document.getElementById("manual-btn").style.display = "none";
+      }
+
+      // Garante que a seção do manual comece colapsada
+      document.getElementById("manual-section").style.display = "none";
     }
 
     function closeGameModal() {
       document.getElementById("game-modal").style.display = "none";
+    }
+
+    // INTERAÇÃO EXPANSÍVEL DO MANUAL INTERNO DO MODAL
+    function toggleManual() {
+      const manualSec = document.getElementById("manual-section");
+      if (manualSec.style.display === "none") {
+        manualSec.style.display = "block";
+        // Rolagem suave focada no elemento recém-aberto
+        manualSec.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        manualSec.style.display = "none";
+      }
     }
 
     // FECHAMENTO AO CLICAR FORA DA CAIXA BRANCA
